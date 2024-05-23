@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { Provider, useSelector } from 'react-redux';
+import store, { RootState } from './store/store';
+import LoginPage from './components/LoginPage';
+import NewsPage from './components/NewsPage';
+import Navbar from './components/Navbar';
 
-function App() {
+const PrivateRoute: React.FC<{ component: React.FC }> = ({ component: Component }) => {
+  const token = useSelector((state: RootState) => state.user.token);
+  return token ? <Component /> : <Navigate to="/" />;
+};
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={ store }>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/news" element={<PrivateRoute component={NewsPage} />} />
+        </Routes>
+      </Router>
+    </Provider>
   );
 }
 

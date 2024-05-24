@@ -1,8 +1,18 @@
 # Erply News Website Hometask
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple yet functional news website built using React.js and TypeScript. The application leverages the NewsAPI to fetch and display the latest news headlines. Users can log in with their email and an API token to access the news articles.
 
-## Available Scripts
+### Technology Stack
+ * React.js: For building the user interface.
+ * TypeScript: For type-safe JavaScript development.
+ * Redux: For state management.
+ * Material-UI: For consistent and responsive UI components.
+ * Axios: For making HTTP requests to the NewsAPI.
+ * Jest and React Testing Library: For testing.
+
+To set up the project run:
+
+### `npm install`
 
 In the project directory, you can run:
 

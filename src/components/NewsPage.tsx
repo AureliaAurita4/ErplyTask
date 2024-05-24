@@ -18,7 +18,7 @@ const NewsPage: React.FC = () => {
                 setLoading(false);
           })
           .catch(error => {
-                setError('Failed to fetch news');
+                setError(error);
                 setLoading(false);
           });
     }, [token]);
